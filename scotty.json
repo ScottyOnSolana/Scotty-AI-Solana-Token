@@ -1,0 +1,16 @@
+{
+    "name": "Scotty AI on Solana",
+    "symbol": "SCOTTY",
+    "description": "Only Possible On Solana",
+    "image": "https://raw.githubusercontent.com/ScottyOnSolana/Scotty-AI-Solana-Token/main/scotty.png",
+    "properties": {
+      "files": [
+        {
+          "uri": "https://raw.githubusercontent.com/ScottyOnSolana/Scotty-AI-Solana-Token/main/scotty.png",
+          "type": "image/png"
+        }
+      ],
+      "category": "image"
+    }
+  }
+  
