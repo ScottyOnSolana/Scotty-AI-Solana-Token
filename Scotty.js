@@ -29,10 +29,10 @@ import {
 } from "@solana/spl-token-metadata";
 
 import { addKeypairToEnvFile } from '@solana-developers/node-helpers';
-const privateKey = [// privtekey key ];
+const privateKey = ['private key'];
 const payer = Keypair.fromSecretKey(Buffer.from(privateKey));
 
-const connection = new Connection("your RPC url", "confirmed");
+const connection = new Connection("rpc url ", "confirmed");
 
 let transaction;
 let transactionSignature;
@@ -49,7 +49,7 @@ const metaData = {
     mint: mint,
     name: "Scotty AI on Solana",
     symbol: "SCOTTY",
-    uri: "",
+    uri: "https://raw.githubusercontent.com/ScottyOnSolana/Scotty-AI-Solana-Token/main/scotty.json",
     additionalMetadata: [["description", "Only Possible On Solana"]],
 };
 
@@ -98,12 +98,15 @@ const initializeMetadataInstruction = createInitializeInstruction({
     mintAuthority: mintAuthority,
     name: metaData.name,
     symbol: metaData.symbol,
+    uri: metaData.uri,
 });
 
 const updateFieldInstruction = createUpdateFieldInstruction({
     programId: TOKEN_2022_PROGRAM_ID,
     metadata: mint,
     updateAuthority: updateAuthority,
+    fields: [["uri", "https://raw.githubusercontent.com/ScottyOnSolana/Scotty-AI-Solana-Token/main/scotty.json"]],
+
 });
 await new Promise(resolve => setTimeout(resolve, 20000)); // 10-second delay
 
@@ -263,6 +266,5 @@ console.log("10 seconds have passed, continuing execution...");
 }
 
 await revokeMintAuthority(connection, mint,  payer);
-
 
 
